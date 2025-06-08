@@ -1,12 +1,11 @@
-// Basic HTTP server using Node.js
-const http = require('http');
+const express = require("express");
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello from your first backend server!\n');
+app.get("/", (req, res) => {
+  res.send("Hello from Express!");
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
